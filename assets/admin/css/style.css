@@ -1,0 +1,427 @@
+*{
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+html{
+	font-family: sans-serif;
+	font-size: 15px;
+
+	background-color:#f2f3f7;
+}
+
+/*------HEADER------*/
+#header{
+	background-color: #157ED2;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#logo{
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: 800;
+	font-size: 28px;
+	position: unset;
+}
+
+.end_plan{
+	border-radius: 2em;
+	margin: 10px 20px 10px 10px;
+	padding: 5px 15px;
+	background-color: white ;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,.4) ;
+	color:black;
+}
+
+.end_plan:hover{
+	background-color: black ;
+	color:white ;
+	transition:.2s;
+}
+
+.end_plan:active{
+	box-shadow: none ;
+	transition: .2s;
+}
+
+/*------END-HEADER------*/
+
+main{
+	width:740px;
+	display: grid;
+	grid-template-columns: 1fr;
+
+	margin: 0px auto ;
+	padding: 30px;
+}
+
+
+
+#orders{
+	background-color:#fff;
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 3px 3px 0 0;
+	border-bottom: 2px solid #157ED2;
+
+	padding-bottom: 30px;
+
+}
+
+#plans{
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 0 0 3px 3px;
+
+	border-top: 2px solid #157ED2;
+	background-color:#fff;
+	
+}
+
+.orders__title, .plans__title{
+	margin-top:10px;
+	font-size: 28px;
+	font-weight: 700;
+	color: #333;
+	text-align: center;
+}
+
+.wrap-check-plans{
+	display: flex;
+	justify-content: center;
+
+}
+
+.check-plans{
+	display: flex;
+	justify-content: center;
+	box-sizing: content-box;
+
+	border:2px solid #157ED2;
+	border-radius: 2em;
+}
+
+.check-plans__all, .check-plans__specific{
+	padding: .5em 1em;
+	font-size:16px;
+	margin: 0.2em;
+}
+
+.check-plans__specific.active {
+	display:flex;
+	flex-grow: 1px;
+}
+
+.check-plans__input{
+	outline:none;
+	background:none;
+	border:none;
+	width: 1em;
+	color: white;
+	padding:0px 0px 0px 2px;
+}
+
+.check-plans__input::placeholder{
+	color:white;
+}
+
+.check-plans__all.active, .check-plans__specific.active{
+	border:1px solid #00cc00;
+	border-radius: 2em;
+
+	background: #00cc00;
+	color: white;
+}
+
+.add-plan-post-delivery-btn, .add-plan-delivery-btn {
+	padding:none;
+	text-decoration: none;
+	color:#5e6c84;
+	display: block;
+	padding:5px;
+	margin:10px 0;
+	text-align: center;
+}
+
+
+.add-plan-post-delivery-btn:hover , .add-plan-delivery-btn:hover{
+	text-decoration: underline;
+	background-color:#DADCE2;
+}
+
+
+
+ol.list-clients , ol.list-post_delivery,ol.list-delivery{
+}
+
+ol.list-post_delivery,ol.list-delivery{
+	padding: 0 50px;
+}
+
+ol.list-clients{
+	list-style-type: none;
+}
+
+ol.prodects{
+	padding:0 50px;
+}
+
+li.one-client{
+	margin-top:15px;
+}
+li.one-product{
+	margin-top: 10px;
+}
+.one-client__name{
+	font-size: 20px; 
+	font-weight: 700;
+	color:#333;
+	padding-left: 15px;
+}
+
+.wrap-one-prodect{
+	display: grid;
+	grid-template-columns: 1fr 100px;
+}
+.one-product__title, .one-product__count{
+	padding: 10px;
+	text-align:center;
+}
+.one-product__title{
+	border:1px solid #157ED2;
+	border-radius: 3px 0 0 3px;
+}
+.one-product__count{
+	border:1px solid #157ED2;
+	border-radius:0 3px 3px 0;
+	border-left: none;
+
+}
+
+
+
+
+
+.post_delivery , .delivery{
+	padding: 15px 0;
+}
+
+.delivery__title, .post_delivery__title{
+	padding-left: 15px ; 
+	font-size: 20px; 
+	font-weight: 700;
+	color:#333;
+}
+
+.wrap-one-delivery, .wrap-one-post-delivery{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	margin:10px 0;
+}
+.products,.count_product,.destination{
+	padding: 10px;
+	height: 20px;
+	text-align: center;
+}
+
+
+.wrap-one-delivery .count_product , .wrap-one-post-delivery .count_product{
+	border-top:1px solid #157ED2;
+	border-bottom:1px solid #157ED2;
+}
+.wrap-one-delivery .products , .wrap-one-post-delivery .products{
+	border:1px solid #157ED2;
+	border-radius: 3px 0 0 3px;
+}
+.wrap-one-delivery .destination , .wrap-one-post-delivery .destination{
+	border:1px solid #157ED2;
+	border-radius: 0 3px 3px 0;
+}
+
+
+
+.add-plan-panel{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+	margin:0 50px;
+
+}
+.check-delivery{
+	display: grid;
+	/*height:40px;*/
+}
+.tool-plan-panel{
+	display: grid;
+	grid-row-gap: 15px;
+}
+.check-delivery, .tool-plan-panel, .check-store{
+	border:1px solid #157ED2;
+	border-radius: 3px;
+	padding: 10px;
+}
+.check-store__title{
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.oneorder{
+	position: relative;
+
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 3px;
+
+	padding:10px;
+
+	display: grid;
+	grid-template-columns: 150px 1fr 1fr 1fr;
+
+	background-color: #fff;
+}
+
+.sends_activity{
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 3px;
+
+	padding:10px;
+
+	height: 150px;
+
+	background-color: #fff;
+	vertical-align: middle ;
+	display: grid;
+	grid-template-rows: 1fr 40px;
+}
+
+.activity__send{
+	border:2px solid #157ED2;
+	border-radius: 3px;
+
+	color: #157ED2;
+	font-weight: 600;
+	text-align: center;
+
+	padding: 10px 0;
+	cursor: pointer;
+}
+.activity__send:hover{
+	background-color: #157ED2;
+	color:white;
+
+	transition:.2s;
+}
+
+.oneorder:first-child {
+	margin-top: 0;
+}
+
+.oneorder__img{
+	height: 100px;
+}
+
+.oneorder__title{
+	color: #333;
+	padding-top: 10px;
+
+	font-size:20px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.counter{
+	height: 40px;
+	display: grid;
+	grid-template-columns:40px 40px 40px;
+	grid-gap: 10px;
+}
+
+.counter__plus, .counter__minus{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border:2px solid #157ED2;
+	border-radius: 3px;
+
+	text-align: center;
+	color: #157ED2;
+	font-weight: 600;
+	font-size: 24px;
+
+	padding-top: 10px auto;
+
+	cursor: pointer;
+}
+
+.counter__minus:hover, .counter__plus:hover{
+	background-color: #157ED2;
+	color:white;
+
+	transition:.2s;
+}
+
+.counter__check{
+	background-color: #f8f8f8;
+	border-radius: 3px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: text;
+}
+
+
+.counter__check:hover{
+	background-color: #d1d1d1;
+
+	transition:.2s;
+}
+
+/*------END-HEADER------*/
+

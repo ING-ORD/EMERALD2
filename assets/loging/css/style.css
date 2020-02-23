@@ -1,0 +1,82 @@
+*{
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+html{
+	font-family: sans-serif;
+	font-size: 15px;
+	background-color:#f2f3f7;
+}
+
+/*------HEADER------*/
+#header{
+	background-color: #157ED2;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	margin:auto;
+}
+
+#logo{
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: 800;
+	font-size: 28px;
+	position: unset;
+	color:rgb(27, 27, 27);
+}
+
+/*------END-HEADER------*/
+
+/*------BEGIN-MAIN------*/
+
+main{
+	display: grid;
+
+	grid-template-columns: 1fr;
+	grid-template-columns: 1fr;
+
+	margin:auto;
+	width: 40%;
+}
+
+.login{
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+
+.contain{
+	display: grid;
+
+	grid-template-columns: 1fr;
+	grid-template-columns: 1fr;
+
+}
+
+.login .title{
+	/* text-transform: uppercase; */
+	padding-bottom: 10px;
+	font-weight: 700;
+	color:rgb(27, 27, 27);
+	font-size: 18px;
+	text-align: center;
+}
+
+.login .submit{
+	border:1px solid #157ED2;
+	background-color: #157ED2;
+	color: #fff;
+
+
+	border-radius: 5px;
+	padding:2px;
+	margin:10px;
+
+	text-align: center;
+}

@@ -1,0 +1,179 @@
+*{
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+html{
+	font-family: sans-serif;
+	font-size: 15px;
+
+	background-color:#f2f3f7;
+}
+
+/*------HEADER------*/
+#header{
+	background-color: #157ED2;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#logo{
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: 800;
+	font-size: 28px;
+	position: unset;
+}
+
+#basket{
+	width: 40px;
+	height: 50px;
+	padding-right: 20px;
+
+}
+#basket img{
+	padding: 5px;
+	width: 40px;
+	height: 40px;
+}
+
+/*------END-HEADER------*/
+
+main{
+	width:840px;
+	display: grid;
+	grid-template-columns: 650px 190px;
+	grid-gap: 15px;
+
+	margin: 0px auto ;
+	padding: 30px;
+}
+
+#sends{
+
+}
+
+#orders{
+	display: grid;
+	grid-gap: 15px;
+}
+
+.oneorder{
+	position: relative;
+
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 5px;
+
+	padding:10px;
+
+	display: grid;
+	grid-template-columns: 150px 1fr 1fr 1fr;
+
+	background-color: #fff;
+}
+
+.sends_activity{
+	box-shadow: 0 1px 3px 0 #bbb;
+	border-radius: 5px;
+
+	padding:10px;
+
+	height: 150px;
+
+	background-color: #fff;
+	vertical-align: middle ;
+	display: grid;
+	grid-template-rows: 1fr 40px;
+}
+
+.activity__send{
+	border:2px solid #157ED2;
+	border-radius: 5px;
+
+	color: #157ED2;
+	font-weight: 600;
+	text-align: center;
+
+	padding: 10px 0;
+	cursor: pointer;
+}
+.activity__send:hover{
+	background-color: #157ED2;
+	color:white;
+
+	transition:.2s;
+}
+
+.oneorder:first-child {
+	margin-top: 0;
+}
+
+.oneorder__img{
+	height: 100px;
+}
+
+.oneorder__title{
+	color: #333;
+	padding-top: 10px;
+
+	font-size:20px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.counter{
+	height: 40px;
+	display: grid;
+	grid-template-columns:40px 40px 40px;
+	grid-gap: 10px;
+}
+
+.counter__plus, .counter__minus{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	border:2px solid #157ED2;
+	border-radius: 5px;
+	
+	text-align: center;
+	color: #157ED2;
+	font-weight: 600;
+	font-size: 24px;
+
+	padding-top: 10px auto;
+
+	cursor: pointer;
+}
+
+.counter__minus:hover, .counter__plus:hover{
+	background-color: #157ED2;
+	color:white;
+
+	transition:.2s;
+}
+
+.counter__check{
+	background-color: #f8f8f8;
+	border-radius: 5px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: text;
+}
+
+
+.counter__check:hover{
+	background-color: #d1d1d1;
+
+	transition:.2s;
+}
+
+/*------END-HEADER------*/
+
