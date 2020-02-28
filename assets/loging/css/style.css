@@ -49,23 +49,36 @@ main{
 	left:50%;
 	top:50%;
 	transform: translate(-50%,-50%);
+	/* border:1px solid #000; */
+	padding: 25px;
+	height: 200px;
+	width: 200px;
+	border-radius: 3px;
+	background-color: #fdfdfd;
+	box-shadow: 0 2px 4px #d2d2d2;
+
+	display: grid;
+	grid-template-rows: 20% 60% 20%;
+
+	/* padding:5px; */
+
 }
 
 .contain{
 	display: grid;
 
 	grid-template-columns: 1fr;
-	grid-template-columns: 1fr;
 
 }
 
 .login .title{
 	/* text-transform: uppercase; */
-	padding-bottom: 10px;
+	/* padding: 10px; */
 	font-weight: 700;
 	color:rgb(27, 27, 27);
 	font-size: 18px;
 	text-align: center;
+	
 }
 
 .login .submit{
@@ -79,4 +92,34 @@ main{
 	margin:10px;
 
 	text-align: center;
+}
+
+input{
+	border:none;
+	border-bottom: 1px solid #424242 ;
+	background-color: #fdfdfd ;
+	/* margin-bottom:5px; */
+	padding-bottom: 2px;
+}
+
+.pass-contain{
+	/* display: grid;
+
+	grid-template-rows: 1fr 1fr; */
+	margin-left: 20px;
+	margin-right: 20px;
+
+}
+
+.email-contain{
+	/* display: grid;
+
+	grid-template-rows: 1fr 1fr; */
+
+	margin-left: 20px;
+	margin-right: 20px;
+}	
+
+label {
+	align-content: center;
 }

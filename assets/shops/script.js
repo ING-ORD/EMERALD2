@@ -22,6 +22,7 @@ window.onload = function(){
 		},
 		datatype: "json",
 		success:function(data){
+			console.log(data)
 			allProducts = {...JSON.parse(data)};
 			sectionProductsCreate.apply(document.getElementById("products"),[allProducts]);
 		}
