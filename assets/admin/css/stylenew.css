@@ -1,0 +1,76 @@
+*{
+	margin: 0;
+	padding: 0;
+	cursor: default;
+}
+html{
+	font-family: sans-serif;
+	font-size: 15px;
+
+	background-color:#f2f3f7;
+}
+
+/*------HEADER------*/
+#header{
+	background-color: #157ED2;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#logo{
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: 800;
+	font-size: 28px;
+	position: unset;
+}
+
+.end_plan{
+	border-radius: 2em;
+	margin: 10px 20px 10px 10px;
+	padding: 5px 15px;
+	background-color: white ;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,.4) ;
+	color:black;
+}
+
+.end_plan:hover{
+	background-color: black ;
+	color:white ;
+	transition:.2s;
+}
+
+.end_plan:active{
+	box-shadow: none ;
+	transition: .2s;
+}
+
+/*------END-HEADER------*/
+
+#main {
+    display: grid;
+
+    grid-template-areas: "plans orders";
+
+    grid-template-columns: 1fr 1fr;
+}
+
+#orders {
+    grid-area: orders;
+}
+
+#plans {
+    grid-area: plans;
+}
+
+.orders__title, .plans__title{
+    padding:20px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}

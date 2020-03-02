@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/admin/css/stylenew.css">
+	<script src="assets/lib/jquery-3.4.1.min.js"></script>
+	<script src="assets/admin/js/scriptnew.js" ></script>
+	<title>Emerald AdmPanel</title>
+
+</head>
+<body>
+	<header id="header">
+		<div id="logo">emerald</div>
+		<div class="end_plan">Подтвердить плана</div>
+	</header>
+	<main id="main">
+		<section id="orders">
+			<div class="orders__title">Заказы</div>
+			<ol class="list-clients">
+				
+			</ol>
+		</section>
+		<section id="plans">
+			<div class="plans__title">Пункты</div>
+			<div class="wrap-check-plans">
+				<div class="check-plans">
+
+					<div class="check-plans__all">Все</div>
+					<div class="check-plans__specific active">
+						<div class="check-plans__number">Пункт №</div>
+						<input class="check-plans__input" placeholder="1">
+					</div>
+				</div>
+			</div>
+			<div class="list-plans">
+				<div class="post_delivery">
+					<div class="post_delivery__title">Поставка на склад:</div>
+					<ol class="list-post_delivery">
+						
+					</ol>
+					<a class="add-plan-post-delivery-btn new" href="#">
+						<span class="add-plan-btn__icon">+</span>
+						<span class="add-plan-btn__title">
+							Добавить новую строку
+						</span>
+					</a>
+					<div class="container-add-plan-panel post-delivery-add"></div>
+				</div>
+				<div class="delivery">
+					<div class="delivery__title">Доставка клиенту:</div>
+					<ol class="list-delivery">
+						
+					</ol>
+					<a class="add-plan-delivery-btn new" href="#">
+						<span class="add-plan-btn__icon">+</span>
+						<span class="add-plan-btn__title">
+							Добавить новую строку
+						</span>
+					</a>
+					<div class="container-add-plan-panel delivery-add"></div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer id="footer"></footer>
+</body>
+</html>
