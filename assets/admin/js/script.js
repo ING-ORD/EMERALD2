@@ -42,7 +42,6 @@ window.onload = function(){
 
 		}else{
 			let data = getDataPostDelivery();
-			console.log(data);
 			listPostDeliveryCreate.apply(document.querySelector(".list-post_delivery"),[data])
 			
 			data["typeOfTransportation"] = 0;
@@ -52,7 +51,6 @@ window.onload = function(){
 			this.classList.remove("confirm");
 			this.classList.add("new");
 			this.querySelector(".add-plan-btn__title").innerText = "Добавить новый план";
-			console.log("/n",data);
 			$.ajax({
 				url:"assets/admin/php/ajaxRespons.php",
 				type:"POST",
@@ -61,8 +59,6 @@ window.onload = function(){
 				},
 				datatype:"JSON",
 				success: function(data){
-
-					console.log(data);
 					return true;
 				},
 				error: function(err){console.log(err)}
@@ -99,7 +95,6 @@ window.onload = function(){
 			// 		product:""
 			// 	}
 			// }
-			console.log(data)
 			$.ajax({
 				url:"assets/admin/php/ajaxRespons.php",
 				type:"POST",
@@ -108,7 +103,6 @@ window.onload = function(){
 				},
 				datatype:"JSON",
 				success: function(data){
-					console.log(data);
 					return true;
 				}
 
@@ -343,6 +337,21 @@ let onePostDeliveryCreate = function(data){
 
 	wrap.append(product, countProduct , destination);
 
+	let check_click = false;
+
+	html.onclick = function(e) {
+
+		if (check_click){
+			clearingHtmlFromTagAndContentBySelector(".tools-mode");
+			check_click = false;
+		}else{
+
+			check_click = createToolsForLineOnPlane.call(data, html);
+		}
+
+		return true;
+	}
+	
 	html.append(wrap);
 
 	return html;
@@ -367,7 +376,22 @@ let oneDeliveryCreate = function(data){
 	let destination = create("div", "destination");
 	destination.innerText = DDestination;
 	
-	wrap.append(product, countProduct, destination)
+	wrap.append(product, countProduct, destination);
+
+	let check_click = false;
+
+	html.onclick = function(e) {
+
+		if (check_click){
+			clearingHtmlFromTagAndContentBySelector(".tools-mode");
+			check_click = false;
+		}else{
+
+			check_click = createToolsForLineOnPlane.call(data, html);
+		}
+
+		return true;
+	}
 	
 
 	html.append(wrap);
@@ -394,6 +418,69 @@ let getDataDelivery = function(){
 	let product = document.querySelector(".tool-plan-panel__products").value;
 	let destination = document.querySelector(".tool-plan-panel__client").value;
 	return {item, product, countProduct  /*, provider*/,destination};
+}
+
+let createToolsForLineOnPlane = function (html) {
+
+	let {product:DProduct, countProduct:DCountProduct, provider:DProvider, destination:DDestination} = this
+
+	clearingHtmlFromTagAndContentBySelector(".tools-mode");
+
+	let tools = create("div", "tools-mode");
+
+	let tools_edit = create("div", "tools-mode-edit");
+
+	let tools_edit_image = create ("img", "tools-mode-edit_img");
+
+	tools_edit_image.setAttribute("src", "./assets/admin/images/edit.svg")
+
+	tools_edit.append(tools_edit_image);
+
+	let otstup = create("div", "tools-mode-empty");
+
+
+	let tools_remove = create("div", "tools-mode-remove");
+
+	let tools_remove_image = create ("img", "tools-mode-remove_img");
+
+	tools_remove_image.setAttribute("src", "./assets/admin/images/delete.svg")
+
+	tools_remove.append(tools_remove_image);
+	
+	tools_remove.onclick = function(){
+
+		html.outerHTML = ""
+
+		//сделать запрос на сервер для удаления
+
+		return true;
+	}
+
+	tools_edit.onclick = function(){
+		this.product = "LOX";
+		this.countProduct = "50";
+		console.log(this.countProduct);
+
+		return true;
+	}
+
+
+	tools.append(otstup,tools_edit, tools_remove);
+
+	html.append(tools);
+
+	console.log(this.countProduct);
+
+	return true;
+
+}
+
+let clearingHtmlFromTagAndContentBySelector = function(selector) {
+	let tools_selectors = document.querySelectorAll(selector);
+
+	for ( let item of tools_selectors ) {
+		item.outerHTML = "";
+	}
 }
 
 
