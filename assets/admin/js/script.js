@@ -38,7 +38,7 @@ window.onload = function(){
 			document.querySelector(".post-delivery-add").append(addPlanPanelCreate([]))
 			this.classList.remove("new");
 			this.classList.add("confirm");
-			this.querySelector(".add-plan-btn__title").innerText = "Подтвердить план";
+			this.querySelector(".add-plan-btn__title").innerText = "Подтвердить строку плана";
 
 		}else{
 			let data = getDataPostDelivery();
@@ -50,7 +50,7 @@ window.onload = function(){
 			document.querySelector(".post-delivery-add").innerHTML = "";
 			this.classList.remove("confirm");
 			this.classList.add("new");
-			this.querySelector(".add-plan-btn__title").innerText = "Добавить новый план";
+			this.querySelector(".add-plan-btn__title").innerText = "Добавить новую строку плана";
 			$.ajax({
 				url:"assets/admin/php/ajaxRespons.php",
 				type:"POST",
@@ -86,7 +86,7 @@ window.onload = function(){
 			document.querySelector(".delivery-add").innerHTML = "";
 			this.classList.remove("confirm");
 			this.classList.add("new");
-			this.querySelector(".add-plan-btn__title").innerText = "Добавить новую строку";
+			this.querySelector(".add-plan-btn__title").innerText = "Добавить новую строку плана";
 			// {
 			// 	data:{
 			// 		count:"",
@@ -150,7 +150,7 @@ window.onload = function(){
 			data:{"data":value},
 			datatype:"JSON",
 			success:function(data){
-				let $answer = JSON.parse(data)
+				let $answer = JSON.parse(data);
 				listPostDelivery = $answer["postDelivery"];
 				listDelivery = $answer["delivery"];
 				console.log(listPostDelivery);
@@ -277,6 +277,9 @@ let addPlanPanelCreate = function(data,check = false){
 	for (let i = 1 ; i<4 ; i++){
 		let option = create("option");
 		option.innerText = i + " шт";
+		if (data.countProduct == i){
+			option.setAttribute("selected","selected");
+		}
 		toolCount.append(option);
 	}
 
@@ -284,6 +287,9 @@ let addPlanPanelCreate = function(data,check = false){
 	for (let id in listProducts){
 		let option = create("option");
 		option.innerText = listProducts[id]["name"];
+		if (data.product == listProducts[id]["name"]){
+			option.setAttribute("selected","selected");
+		}
 		toolProduct.append(option);
 	}
 
@@ -300,6 +306,9 @@ let addPlanPanelCreate = function(data,check = false){
 		for (let id in listClients){
 			let option = create("option");
 			option.innerText = listClients[id]["name"];
+			if (data.destination == listClients[id]["name"]){
+				option.setAttribute("selected","selected");
+			}
 			toolDestination.append(option);
 		}
 		tool.append(toolDestination);
@@ -308,6 +317,9 @@ let addPlanPanelCreate = function(data,check = false){
 		for (let id in listProvider){
 			let option = create("option");
 			option.innerText = listProvider[id]["name"];
+			if (data.destination == listProvider[id]["name"]){
+				option.getAttribute("selected","selected");
+			}
 			toolDestination.append(option);
 		}
 		tool.append(toolDestination);
@@ -422,7 +434,8 @@ let getDataDelivery = function(){
 
 let createToolsForLineOnPlane = function (html) {
 
-	let {product:DProduct, countProduct:DCountProduct, provider:DProvider, destination:DDestination} = this
+	let data = this;
+	console.log(data);
 
 	clearingHtmlFromTagAndContentBySelector(".tools-mode");
 
@@ -451,15 +464,56 @@ let createToolsForLineOnPlane = function (html) {
 
 		html.outerHTML = ""
 
+		$.ajax({
+			url:"assets/admin/php/deleteLineOfItem.php",
+			type:"POST",
+			data:{"data":data.id},
+			datatype:"JSON",
+			success:function(data){
+				html.outerHTML = ""
+			}
+		});
+
 		//сделать запрос на сервер для удаления
 
 		return true;
 	}
 
 	tools_edit.onclick = function(){
-		this.product = "LOX";
-		this.countProduct = "50";
-		console.log(this.countProduct);
+		html.outerHTML = "";
+
+		html.outerHTML = ""
+
+		$.ajax({
+			url:"assets/admin/php/deleteLineOfItem.php",
+			type:"POST",
+			data:{"data":data.id},
+			datatype:"JSON",
+			success:function(data){
+				html.outerHTML = ""
+			}
+		});
+		
+		if (data.typeOfTransportation == "0") {
+
+			let self = document.querySelector(".add-plan-post-delivery-btn");
+			document.querySelector(".post-delivery-add").innerHTML = "";
+			document.querySelector(".post-delivery-add").append(addPlanPanelCreate(data))
+			self.classList.remove("new");
+			self.classList.add("confirm");
+			self.querySelector(".add-plan-btn__title").innerText = "Подтвердить строку плана";
+
+		} else if (data.typeOfTransportation == "1") {
+
+			let self = document.querySelector(".add-plan-delivery-btn");
+			document.querySelector(".delivery-add").innerHTML = "";
+			document.querySelector(".delivery-add").append(addPlanPanelCreate(data, true))
+			self.classList.remove("new");
+			self.classList.add("confirm");
+			self.querySelector(".add-plan-btn__title").innerText = "Подтвердить строку плана";
+
+		}
+
 
 		return true;
 	}
