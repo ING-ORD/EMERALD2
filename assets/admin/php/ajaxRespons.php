@@ -3,7 +3,7 @@ $post = $_POST;
 
     $host = 'localhost'; //имя хоста, на локальном компьютере это localhost
     $user = 'root'; //имя пользователя, по умолчанию это root
-    $password = ''; //пароль, по умолчанию пустой
+    $password = '12345678'; //пароль, по умолчанию пустой
     $db_name = 'stock'; //имя базы данных
 
     $link = mysqli_connect($host, $user, $password, $db_name);

@@ -3,7 +3,7 @@ $post = $_POST;
 
 $host = "localhost";
 $user = "root";
-$password = "";
+$password = "12345678";
 $db_name = "stock";
 
 $link = mysqli_connect($host, $user, $password, $db_name);
