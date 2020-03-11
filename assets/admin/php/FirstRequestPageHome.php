@@ -1,14 +1,11 @@
 <?php 
 $post = $_POST;
 
-$host = "localhost";
-$user = "root";
-$password = "12345678";
-$db_name = "stock";
+require("../../configDB.php");
+
+$link = mysqli_connect($HOST_DB, $USER_DB, $PASSWORD_DB, $NAME_DB);
 
 $answer = [];
-
-$link = mysqli_connect($host, $user, $password, $db_name);
 
 mysqli_query($link, "SET NAMES 'utf8' ");
 

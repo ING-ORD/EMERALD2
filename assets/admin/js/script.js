@@ -462,7 +462,7 @@ let createToolsForLineOnPlane = function (html) {
 	
 	tools_remove.onclick = function(){
 
-		html.outerHTML = ""
+		html.outerHTML = "";
 
 		$.ajax({
 			url:"assets/admin/php/deleteLineOfItem.php",
@@ -481,8 +481,6 @@ let createToolsForLineOnPlane = function (html) {
 
 	tools_edit.onclick = function(){
 		html.outerHTML = "";
-
-		html.outerHTML = ""
 
 		$.ajax({
 			url:"assets/admin/php/deleteLineOfItem.php",
