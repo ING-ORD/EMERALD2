@@ -12,9 +12,10 @@ window.onload = function(){
 			console.log(data)
 			answer = JSON.parse(data);
 			console.log(answer);
-			// listOrders = answer["buys"];
-			// sectionOrderCreate(listOrders);
-			// listDrivers = answer["providers"];
+
+			listOrders = answer["buys"];
+			sectionOrderCreate(listOrders);
+
 			listProvider = answer["providers"];
 			listProducts = answer["products"];
 			listClients = answer["clients"];
@@ -202,12 +203,12 @@ let create = function(tag, cl){
 
 
 //секция клиентов
-let oneClientCreate = function(data,id = 0){
+let oneClientCreate = function(data,key){
 	let html = create("li","one-client");
 
 	let name = create("div","one-client__name");
 	console.log(data);
-	name.innerText = data[id]["client"];
+	name.innerText = key;
 
 	let products = create("ol", "prodects");
 
@@ -219,35 +220,41 @@ let oneClientCreate = function(data,id = 0){
 
 let listClientCreate = function(data){
 	this.innerHTML = "";
-	this.append( oneClientCreate(data,0) );
+	for (let key in data){
+		this.append( oneClientCreate(data[key],key) );
+	}
 	
 }
 
 let oneProductCreate = function(data,id){
 
 	let html = create("li","one-product");
+	for (let key in data){
 
-	let {product:DTitle,count:DCount} = data;
+		let {product:DTitle,count:DCount} = data[key];
 
-	let wrap = create("div", "wrap-one-prodect");
+		let wrap = create("div", "wrap-one-prodect");
 
-	let title = create("div","one-product__title");
-	title.innerText = DTitle;
+		let title = create("div","one-product__title");
+		title.innerText = DTitle;
 
-	let count = create("div","one-product__count");
-	count.innerText = DCount + " шт";
+		let count = create("div","one-product__count");
+		count.innerText = DCount + " шт";
 
-	wrap.append(title,count);
+		wrap.append(title,count);
 
-	html.append(wrap);
+		html.append(wrap);
+	} 
+
+
 
 	return html;
 }
 
 let listProductCreate = function (data){
 	this.innerHTML = "";
-	for (let id in data){
-		this.append( oneProductCreate(data[id],id) );
+	for (let key in data){
+		this.append( oneProductCreate(data[key],key) );
 	}
 }
 
@@ -435,7 +442,6 @@ let getDataDelivery = function(){
 let createToolsForLineOnPlane = function (html) {
 
 	let data = this;
-	console.log(data);
 
 	clearingHtmlFromTagAndContentBySelector(".tools-mode");
 
@@ -520,8 +526,6 @@ let createToolsForLineOnPlane = function (html) {
 	tools.append(otstup,tools_edit, tools_remove);
 
 	html.append(tools);
-
-	console.log(this.countProduct);
 
 	return true;
 

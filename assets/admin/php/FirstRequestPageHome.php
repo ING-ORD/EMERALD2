@@ -15,12 +15,32 @@ mysqli_query($link, "SET NAMES 'utf8' ");
 // for ($data = []; $row  = mysqli_fetch_assoc($result); $data[] = $row);
 // $answer["buys"] = $data;
 
-//список машин
-// $query = "SELECT `name`,`type` FROM `drivers`";
-// $result = mysqli_query($link, $query) or die(mysqli_error($link));
+//список заказов от клиентов
+$query = "SELECT `buys`.`id` AS 'buy', `clients`.`name` AS 'client', `products`.`name` AS 'product', `list_products`.`count` FROM `buys` JOIN `list_products` ON `list_products`.`buy` = `buys`.`id` JOIN `clients` ON `buys`.`id_client` = `clients`.`id` JOIN `products` ON `list_products`.`product` = `products`.`id`;";
 
-// for ($data = []; $row  = mysqli_fetch_assoc($result); $data[] = $row);
-// $answer["providers"] = $data;
+$result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+$data = [];
+$endClient = "";
+$endBuysClient = "";
+$itemBuysClient = 0;
+
+for ( $i = 0; $i < mysqli_num_rows($result); $i++ ){
+    $row = mysqli_fetch_assoc($result);
+
+    $client = $row["client"];
+    if ($endBuysClient != $row["buy"] and $endBuysClient != "") {
+        $itemBuysClient += 1;
+    }
+    $endBuysClient = $row["buy"];
+
+    unset($row["client"]);
+    unset($row["buy"]);
+
+    $data[$client][$itemBuysClient][] = $row;
+
+};
+$answer["buys"] = $data;
 
 //список поставщиков
 $query = "SELECT `id`,`name` FROM `providers`";
